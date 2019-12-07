@@ -7,7 +7,7 @@ version: "2"
 services:
   # http
   http:
-    image: ${IMAGE_HTTP}
+    image: ${IMAGE_REPO}/${IMAGE_HTTP}
     container_name: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
     restart: "always"
@@ -21,7 +21,7 @@ services:
       - "http.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"
   # ftp
   ftp:
-    image: ${IMAGE_FTP}
+    image: ${IMAGE_REPO}/${IMAGE_FTP}
     container_name: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
     restart: "always"
