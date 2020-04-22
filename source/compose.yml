@@ -7,10 +7,12 @@ version: "2"
 services:
   # http
   http:
-    image: ${IMAGE_REPO}/${IMAGE_HTTP}
+    image: "${IMAGE_HTTP}"
     container_name: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
     restart: "always"
+    env_file:
+      - ./nginx.env
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./volume/http/conf/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -21,22 +23,14 @@ services:
       - "http.${PRODUCT_NAME}.${COMPANY_NAME}:${HOST_IP}"
   # ftp
   ftp:
-    image: ${IMAGE_REPO}/${IMAGE_FTP}
+    image: "${IMAGE_FTP}"
     container_name: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
     restart: "always"
+    env_file:
+      - ./pureftpd.env
     environment:
       - PUBLICHOST=${HOST_IP}
-      - FTP_USER_NAME=szgd
-      - FTP_USER_PASS=123456
-      - FTP_USER_HOME=/home/ftpusers/szgd
-      - FTP_PASSIVE_PORTS=30000:50000
-      - FTP_MAX_CLIENTS=100
-      - FTP_MAX_CONNECTIONS=100
-      - TLS_C=CN
-      - TLS_CN=*.cdjdgm.com
-      - TLS_ORG=cdjdgm.com
-      - ADDED_FLAGS=--tls=1 -O w3c:/var/log/pure-ftpd/pure-ftpd.log
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./volume/ftp/passwd:/etc/pure-ftpd/passwd:rw
