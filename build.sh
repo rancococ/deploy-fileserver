@@ -56,7 +56,7 @@ cd "${base_dir}"
 
 # envirionment
 product_name="fileserver"
-product_version="1.0.0.1"
+product_version="1.0.0.0"
 images=(
 registry.cdjdgm.com/library/nginx:1.15.12
 registry.cdjdgm.com/stilliard/pure-ftpd:hardened

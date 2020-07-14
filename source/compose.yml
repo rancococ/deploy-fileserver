@@ -29,8 +29,6 @@ services:
     restart: "always"
     env_file:
       - ./pureftpd.env
-    environment:
-      - PUBLICHOST=${HOST_IP}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./volume/ftp/passwd:/etc/pure-ftpd/passwd:rw
