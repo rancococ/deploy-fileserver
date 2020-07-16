@@ -59,7 +59,7 @@ product_name="fileserver"
 product_version="1.0.0.0"
 images=(
 registry.cdjdgm.com/library/nginx:1.15.12
-registry.cdjdgm.com/stilliard/pure-ftpd:hardened
+registry.cdjdgm.com/stilliard/pure-ftpd:20200717
 )
 temp_uuid="$(cat /proc/sys/kernel/random/uuid)"
 build_home="/tmp/build_${temp_uuid}"
