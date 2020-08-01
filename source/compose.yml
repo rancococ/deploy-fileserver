@@ -10,7 +10,7 @@ services:
     image: "${IMAGE_HTTP}"
     container_name: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "http.${PRODUCT_NAME}.${COMPANY_NAME}"
-    restart: "always"
+    restart: "no"
     env_file:
       - ./nginx.env
     volumes:
@@ -26,7 +26,7 @@ services:
     image: "${IMAGE_FTP}"
     container_name: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
     hostname: "ftp.${PRODUCT_NAME}.${COMPANY_NAME}"
-    restart: "always"
+    restart: "no"
     env_file:
       - ./pureftpd.env
     volumes:
